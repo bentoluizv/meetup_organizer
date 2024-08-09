@@ -1,16 +1,17 @@
 import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
+from testcontainers.postgres import PostgresContainer
 
 from meetup_organizer.database.models import Base
 
 
 @pytest.fixture(scope='session')
 def engine():
-    engine = create_engine(
-        'postgresql://postgres:postgres@127.0.0.1:54322/postgres'
-    )
-    return engine
+    with PostgresContainer() as postgres:
+        _engine = create_engine(postgres.get_connection_url())
+        with _engine.begin():
+            yield _engine
 
 
 @pytest.fixture()
