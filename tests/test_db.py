@@ -2,7 +2,7 @@ from datetime import datetime
 
 from sqlalchemy import select
 
-from meetup_organizer.database.models import MeetupDb
+from meetup_organizer.database.models import MeetupDb, UserDb
 
 
 def test_create_meetup(session):
@@ -21,3 +21,8 @@ def test_create_meetup(session):
     )
 
     assert meetup.location == 'Senai Florianópolis'
+
+
+def test_get_user(session, user_db):
+    exists = session.scalar(select(UserDb).where(UserDb.uuid == user_db.uuid))
+    assert exists.username == 'test'
