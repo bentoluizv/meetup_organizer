@@ -1,4 +1,4 @@
-'Production Build CI'
+name: 'Production Build CI'
 on:
   pull_request:
     branches:
