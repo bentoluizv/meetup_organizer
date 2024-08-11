@@ -5,7 +5,6 @@ on:
       - 'main'
 jobs:
   docker:
-    depends: build
     runs-on: ubuntu-latest
     steps:
       - name: Login to Docker Hub
