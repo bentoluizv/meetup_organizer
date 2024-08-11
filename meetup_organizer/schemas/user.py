@@ -1,4 +1,5 @@
 from typing import Any
+from uuid import UUID, uuid4
 
 from pydantic import (
     BaseModel,
@@ -37,6 +38,7 @@ class CreationalUserSchema(BaseModel):
 class User(BaseModel):
     username: str
     password: str
+    uuid: UUID = uuid4()
 
     @classmethod
     def create(cls, data: CreationalUserSchema):
