@@ -32,7 +32,7 @@ jobs:
       - name: Run migrations with alembic
         run: poetry run alembic upgrade head
 
-    docker:
+  docker:
       runs-on: ubuntu-latest
       steps:
         - name: Checkout
