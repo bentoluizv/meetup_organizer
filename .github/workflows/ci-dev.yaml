@@ -3,27 +3,23 @@ on:
     branches:
       - 'develop'
       - 'develop/**'
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Action Checkout
       - uses: actions/checkout@v4
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12.4'
-
-      - name: Install dependencies
+      - name: Upgrade Pip
         run: python -m pip install --upgrade pip
+      - name: Install Poetry
         run: pip install poetry
-        run: poetry lock
-        run: poetry install
-
+      - name: Install Dependencies
+        run: poetry lock; poetry install
       - name: Execute tests with pytest
         run: poetry run task test
-
       - name: Execute docker build
-        run: task build
+        run: poetry run task build
