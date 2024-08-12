@@ -1,0 +1,10 @@
+.github
+.pytest_cache
+.ruff_cache
+htmlcov
+tests
+.coverage
+.env
+.env.*
+.gitignore
+poetry.lock
