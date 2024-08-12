@@ -10,8 +10,6 @@ COPY . .
 
 RUN poetry install -n --without dev
 
-RUN poetry run alembic upgrade
-
 EXPOSE 8000
 
 CMD ["poetry","run", "fastapi", "run", "./meetup_organizer/app.py"]
