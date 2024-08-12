@@ -5,6 +5,6 @@ htmlcov
 tests
 .coverage
 .env
-.env.*
+.env.**
 .gitignore
 poetry.lock
