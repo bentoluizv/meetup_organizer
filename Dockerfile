@@ -1,4 +1,4 @@
-FROM python:3.12.4
+FROM python:3.12.4-alpine
 
 RUN python -m pip install --upgrade pip
 
@@ -12,4 +12,5 @@ RUN poetry install -n --without dev
 
 EXPOSE 8000
 
-CMD ["poetry","run", "fastapi", "run", "./meetup_organizer/app.py"]
+ENTRYPOINT [ "entrypoint.sh" ]
+CMD ["sh"]
